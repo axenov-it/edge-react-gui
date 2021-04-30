@@ -133,7 +133,7 @@
     "edge-components": "^0.0.31",
     "edge-core-js": "^0.17.31",
     "edge-currency-accountbased": "^0.7.54",
-    "edge-currency-plugins": "git://github.com/EdgeApp/edge-currency-plugins.git#9b3aa5998760fe50f42e9338c1d8f6495a00b581",
+    "edge-currency-plugins": "git://github.com/EdgeApp/edge-currency-plugins.git#768fd8cc18c1ee7638c22624c2eb18b63f471bd1",
     "edge-currency-monero": "^0.2.10",
     "edge-exchange-plugins": "^0.11.24",
     "edge-login-ui-rn": "^0.9.1",
