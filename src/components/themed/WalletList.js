@@ -337,7 +337,7 @@ class WalletListComponent extends React.PureComponent<Props> {
   render() {
     const { footer, header, isModal, mostRecentWallets, searchText, searching } = this.props
     const walletList = this.getWalletList()
-    console.log('render isModal', isModal)
+    // console.log('render isModal', isModal)
 
     let isSectionList = false
     let walletOnlyList = []
@@ -347,8 +347,8 @@ class WalletListComponent extends React.PureComponent<Props> {
         isSectionList = true
       }
     }
-    console.log('walletList.length', walletList.length)
-    console.log('walletOnlyList.length', walletOnlyList.length)
+    // console.log('walletList.length', walletList.length)
+    // console.log('walletOnlyList.length', walletOnlyList.length)
 
     return (
       <SwipeListView

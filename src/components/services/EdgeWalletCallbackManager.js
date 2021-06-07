@@ -72,7 +72,7 @@ class EdgeWalletCallbackManager extends React.Component<Props> {
     })
 
     wallet.watch('syncRatio', transactionCount => {
-      console.log(`${this.props.id} - onAddressesChecked with progress ratio: ${transactionCount}`)
+      // console.log(`${this.props.id} - onAddressesChecked with progress ratio: ${transactionCount}`)
 
       if (transactionCount > 0) {
         this.props.updateWalletLoadingProgress(this.props.id, transactionCount)
@@ -84,7 +84,7 @@ class EdgeWalletCallbackManager extends React.Component<Props> {
     })
 
     wallet.watch('blockHeight', blockHeight => {
-      console.log(`${this.props.id} - onBlockHeightChanged with height:${blockHeight}`)
+      // console.log(`${this.props.id} - onBlockHeightChanged with height:${blockHeight}`)
 
       this.props.refreshWallet(this.props.id)
     })

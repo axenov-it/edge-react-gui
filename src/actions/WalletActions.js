@@ -132,7 +132,7 @@ const refreshDetails = {
   walletIds: {}
 }
 
-const upsertFrequency = 3000
+const upsertFrequency = 30000
 
 export const refreshWallet = (walletId: string) => (dispatch: Dispatch, getState: GetState) => {
   const state = getState()
@@ -145,7 +145,7 @@ export const refreshWallet = (walletId: string) => (dispatch: Dispatch, getState
         dispatchUpsertWallets(dispatch, [wallet])
         refreshDetails.lastUpsert = Date.now()
       } else {
-        console.log('refreshWallets setTimeout delay upsert id:' + walletId)
+        // console.log('refreshWallets setTimeout delay upsert id:' + walletId)
         refreshDetails.delayUpsert = true
         refreshDetails.walletIds[walletId] = wallet
         setTimeout(() => {
@@ -162,10 +162,10 @@ export const refreshWallet = (walletId: string) => (dispatch: Dispatch, getState
     } else {
       // Add wallet to the queue to upsert
       refreshDetails.walletIds[walletId] = wallet
-      console.log('refreshWallets delayUpsert id:' + walletId)
+      // console.log('refreshWallets delayUpsert id:' + walletId)
     }
   } else {
-    console.log('refreshWallets no wallet. id:' + walletId)
+    // console.log('refreshWallets no wallet. id:' + walletId)
   }
 }
 
