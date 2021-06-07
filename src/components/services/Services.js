@@ -7,6 +7,7 @@ import { MenuProvider } from 'react-native-popup-menu'
 import { Provider } from 'react-redux'
 import { type Middleware, type Store, applyMiddleware, createStore } from 'redux'
 import thunk from 'redux-thunk'
+import { composeWithDevTools } from 'remote-redux-devtools'
 
 import ENV from '../../../env.json'
 import { loadDeviceReferral } from '../../actions/DeviceReferralActions.js'
@@ -29,7 +30,6 @@ import { NetworkActivity } from './NetworkActivity.js'
 import { PasswordReminderService } from './PasswordReminderService.js'
 import { PermissionsManager } from './PermissionsManager.js'
 import { WalletLifecycle } from './WalletLifecycle.js'
-
 type Props = { context: EdgeContext }
 
 /**
@@ -51,7 +51,19 @@ export class Services extends React.PureComponent<Props> {
     }
 
     const initialState: $Shape<RootState> = {}
-    this.store = createStore(rootReducer, initialState, applyMiddleware(...middleware))
+
+    const composeEnhancers = composeWithDevTools({
+      realtime: true,
+      name: 'Your Instance Name',
+      hostname: 'localhost',
+      port: 8000 // the port your remotedev server is running at
+    })
+
+    this.store = createStore(rootReducer, initialState, composeEnhancers(applyMiddleware(...middleware)))
+
+    if (global.__DEV__) {
+      import('../../../ReactotronConfig').then(() => console.log('Reactotron Configured'))
+    }
 
     // Put the context into Redux:
     const { context } = props
