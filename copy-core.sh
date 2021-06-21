@@ -4,11 +4,15 @@ set -e
 path=${1:-..}
 
 # Builds and copies the Airbitz core libraries into `node_modules`.
-copy_build () {
+copy_build() {
+  echo $path/$1/
   # Build the library:
   (
     cd $path/$1/
-    npm run build
+    yarn run build.lib
+    yarn run build.node
+    yarn run build.react-native
+    yarn run build.types
   )
 
   # Prepare a home in node_modules:
@@ -23,4 +27,5 @@ copy_build () {
 }
 
 copy_build edge-core-js
-npm run postinstall
+yarn run postinstall
+npm run prepare
